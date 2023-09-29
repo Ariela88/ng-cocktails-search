@@ -42,8 +42,6 @@ private apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   }
   
   
-}
-function next(arg0: (data: Cocktail) => any): import("rxjs").OperatorFunction<Cocktail, any[]> {
-  throw new Error('Function not implemented.');
+
 }
 

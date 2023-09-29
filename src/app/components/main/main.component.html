@@ -1,20 +1,20 @@
 <input [(ngModel)]="searchTerm" placeholder="Cerca un cocktail per nome..." />
-<button (click)="search()">Cerca</button>
+<button (click)="searchCocktail()">Cerca</button>
 
 <input [(ngModel)]="ingredientSearchTerm" placeholder="Cerca un cocktail per ingrediente..." />
-<button (click)="search()">Cerca per ingrediente</button>
+<button (click)="searchCocktailByIngredient()">Cerca per ingrediente</button>
 
 <button (click)="getRandomCocktail()">Mi sento fortunato</button>
 
 
-<div *ngIf="cocktails && cocktails.length > 0">
+<div *ngIf="cocktails">
   
   <div *ngFor="let cocktail of cocktails">
     <app-cocktail [cocktails]="cocktail"></app-cocktail>
   </div>
 </div>
 
-<div *ngIf="ingredientCocktails && ingredientCocktails.length > 0">
+<div *ngIf="ingredientCocktails">
  
   <div *ngFor="let cocktail of ingredientCocktails">
     <app-cocktail [cocktails]="cocktail"></app-cocktail>

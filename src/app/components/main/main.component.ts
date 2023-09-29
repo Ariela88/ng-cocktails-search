@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Cocktail } from 'src/app/model/cocktail';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
   searchTerm: string = '';
@@ -14,29 +15,26 @@ export class MainComponent {
   ingredientCocktails: Cocktail[] = [];
   randomCocktail?: Cocktail;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, public router: Router) {}
 
-  search() {
-    this.cocktails = [];
-    this.ingredientCocktails = [];
-    this.randomCocktail = undefined;
-    
-   
-    if (this.searchTerm) {
-      this.dataService.searchCocktail(this.searchTerm)
-        .subscribe(c => this.cocktails = c);
-    }
+  searchCocktail() {
+    this.dataService
+      .searchCocktail(this.searchTerm)
+      .subscribe((c) => (this.cocktails = c));
+  }
 
-   
-
-    if (this.ingredientSearchTerm) {
-      this.dataService.searchCocktailsByIngredient(this.ingredientSearchTerm)
-        .subscribe(cocktailsByIngredient => this.ingredientCocktails = cocktailsByIngredient);
-    }
+  searchCocktailByIngredient() {
+    this.dataService
+      .searchCocktailsByIngredient(this.ingredientSearchTerm)
+      .subscribe(
+        (c) =>
+          (this.ingredientCocktails = c)
+      );
   }
 
   getRandomCocktail() {
-    this.dataService.randomCocktail()
-      .subscribe(randomCocktail => this.randomCocktail = randomCocktail);
+    this.dataService
+      .randomCocktail()
+      .subscribe((rc) => (this.randomCocktail = rc));
   }
 }
