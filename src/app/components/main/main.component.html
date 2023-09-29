@@ -7,30 +7,21 @@
 <button (click)="getRandomCocktail()">Mi sento fortunato</button>
 
 
-<div *ngIf="cocktails">
-  <app-cocktail *ngFor="let cocktail of cocktails"></app-cocktail>
+<div *ngIf="cocktails && cocktails.length > 0">
+  
+  <div *ngFor="let cocktail of cocktails">
+    <app-cocktail [cocktails]="cocktail"></app-cocktail>
+  </div>
 </div>
 
-<ng-template #noResults>
-  <p>Nessun risultato trovato per '{{ searchTerm }}'.</p>
-</ng-template>
-
-
-
-<div *ngIf="randomCocktail; else noResults">
-  <app-cocktail [cocktails]="randomCocktail"></app-cocktail>
-</div>
-
-<div *ngIf="ingredientCocktails.length > 0; else noIngredientResults">
+<div *ngIf="ingredientCocktails && ingredientCocktails.length > 0">
+ 
   <div *ngFor="let cocktail of ingredientCocktails">
     <app-cocktail [cocktails]="cocktail"></app-cocktail>
   </div>
 </div>
 
-<ng-template #noIngredientResults>
-  <p>Nessun risultato trovato per l'ingrediente '{{ ingredientSearchTerm }}'.</p>
-</ng-template>
+<div *ngIf="randomCocktail">
 
-<ng-template #noResults>
-  <p>Nessun risultato trovato per '{{ searchTerm }}'.</p>
-</ng-template>
+  <app-cocktail [cocktails]="randomCocktail"></app-cocktail>
+</div>

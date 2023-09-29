@@ -17,11 +17,14 @@ export class MainComponent {
   constructor(private dataService: DataService) {}
 
   search() {
+    this.cocktails = [];
+    this.ingredientCocktails = [];
+    this.randomCocktail = undefined;
     
    
     if (this.searchTerm) {
       this.dataService.searchCocktail(this.searchTerm)
-        .subscribe(cocktails => this.cocktails = cocktails);
+        .subscribe(c => this.cocktails = c);
     }
 
    

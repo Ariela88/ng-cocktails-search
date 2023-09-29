@@ -13,16 +13,17 @@ export class DataService {
 
 cocktails:Cocktail[]=[]
 
-  private apiUrl = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=';
-  private apiKey = 'YOUR_API_KEY'; 
+private apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+  
   private ingredientApiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
 
   constructor(private http: HttpClient) {}
 
-  searchCocktail(searchTerm: string): Observable<any[]> {
-   
-  return this.http.get<any>(`${this.apiUrl}?s=${searchTerm}`).pipe(
-    map((data: any) => data.drinks as Cocktail[]))
+  searchCocktail(searchTerm: string): Observable<Cocktail[]> {
+    const apiUrl = `${this.apiUrl}${searchTerm}`;
+    return this.http.get<any>(apiUrl).pipe(
+      map((data: any) => data.drinks as Cocktail[])
+    );
   }
 
  
@@ -42,3 +43,7 @@ cocktails:Cocktail[]=[]
   
   
 }
+function next(arg0: (data: Cocktail) => any): import("rxjs").OperatorFunction<Cocktail, any[]> {
+  throw new Error('Function not implemented.');
+}
+
