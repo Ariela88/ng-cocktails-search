@@ -20,7 +20,8 @@ import { FavouritesComponent } from './components/favourites/favourites.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

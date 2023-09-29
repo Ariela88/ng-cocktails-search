@@ -1,4 +1,12 @@
 <input [(ngModel)]="searchTerm" placeholder="Cerca un cocktail..." />
 <button (click)="search()">Cerca</button>
 
-<app-cocktail *ngFor="let cocktail of cocktails" [cocktails]="cocktail"></app-cocktail>
+<div *ngIf="cocktails.length > 0; else noResults">
+  <div *ngFor="let cocktail of cocktails">
+    {{ cocktail.name }} - {{ cocktail.description }}
+  </div>
+</div>
+
+<ng-template #noResults>
+  <p>Nessun risultato trovato per '{{ searchTerm }}'.</p>
+</ng-template>
