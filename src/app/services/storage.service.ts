@@ -30,7 +30,7 @@ export class StorageService {
   removecocktail(cocktail: Cocktail) {
     cocktail.isFavourite = false;
     const actualArray = this.favouritesSubject.value;
-    const newArray = actualArray.filter((c) => c.name !== cocktail.name);
+    const newArray = actualArray.filter((c) => c.strDrink !== cocktail.strDrink);
     this.favouritesSubject.next(newArray);
     localStorage.setItem('favourites', JSON.stringify(newArray));
   }
@@ -47,6 +47,6 @@ export class StorageService {
 
   isFavourite(cocktail: Cocktail):boolean {
     console.log('is favourite', cocktail);
-    return this.favouritesSubject.value.some((c) => c.name===cocktail.name);
+    return this.favouritesSubject.value.some((c) => c.strDrink===cocktail.strDrink);
   }
 }
