@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { CocktailComponent } from './components/cocktail/cocktail.component';
@@ -33,6 +35,8 @@ import { MainComponent } from './components/main/main.component';
     MatCardModule,
     MatPaginatorModule,
     FormsModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent],
