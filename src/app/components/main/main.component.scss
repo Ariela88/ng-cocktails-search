@@ -5,3 +5,17 @@ button{
 body{
     background-color: rgb(64, 2, 89);
 }
+
+.main-container{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-container{
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+}

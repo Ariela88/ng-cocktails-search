@@ -6,22 +6,24 @@
 
 <button (click)="getRandomCocktail()">Mi sento fortunato</button>
 
-
+<div class="main-container">
 <div *ngIf="cocktails">
-  
-  <div *ngFor="let cocktail of cocktails">
+
+  <div class="card-container" *ngFor="let cocktail of cocktails">
     <app-cocktail [cocktails]="cocktail"></app-cocktail>
   </div>
 </div>
 
-<div *ngIf="ingredientCocktails">
- 
-  <div *ngFor="let cocktail of ingredientCocktails">
+
+
+
+  <div  class="card-container" *ngFor="let cocktail of ingredientCocktails">
     <app-cocktail [cocktails]="cocktail"></app-cocktail>
   </div>
 </div>
 
-<div *ngIf="randomCocktail">
+<div  class="card-container" *ngIf="randomCocktail">
 
   <app-cocktail [cocktails]="randomCocktail"></app-cocktail>
 </div>
+
