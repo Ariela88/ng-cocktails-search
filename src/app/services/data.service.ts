@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Cocktail } from '../model/cocktail';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +36,7 @@ private apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   randomCocktail(): Observable<Cocktail> {
     const apiUrl = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
     return this.http.get<any>(apiUrl).pipe(
+      
       map((data: any) => data.drinks[0] as Cocktail)
     );
   }

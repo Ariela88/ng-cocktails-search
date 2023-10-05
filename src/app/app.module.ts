@@ -18,6 +18,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { FavouritesComponent } from './components/favourites/favourites.component';
 import { CocktailComponent } from './components/cocktail/cocktail.component';
 import { MainComponent } from './components/main/main.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { MainComponent } from './components/main/main.component';
     MainComponent,
     CocktailComponent,
     FavouritesComponent,
+    ListComponent,
   ],
   imports: [
     AppRoutingModule,

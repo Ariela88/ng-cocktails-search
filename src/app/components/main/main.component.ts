@@ -9,18 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  searchTerm: string = '';
-  cocktails: Cocktail[] = [];
-  ingredientSearchTerm: string = '';
-  ingredientCocktails: Cocktail[] = [];
-  randomCocktail?: Cocktail;
+ 
+    searchTerm: string = '';
+    cocktailsByName: Cocktail[] = [];
+    ingredientSearchTerm: string = '';
+    ingredientCocktails: Cocktail[] = [];
+    randomCocktail: Cocktail[] = [];
+    showResults: boolean = false;
 
   constructor(private dataService: DataService, public router: Router) {}
 
   searchCocktail() {
     this.dataService
       .searchCocktail(this.searchTerm)
-      .subscribe((c) => (this.cocktails = c));
+      .subscribe((c) => (this.cocktailsByName = c));
+      this.showResults = true;
   }
 
   searchCocktailByIngredient() {
@@ -30,11 +33,18 @@ export class MainComponent {
         (c) =>
           (this.ingredientCocktails = c)
       );
+      this.showResults = true;
+
+
   }
 
   getRandomCocktail() {
     this.dataService
       .randomCocktail()
-      .subscribe((rc) => (this.randomCocktail = rc));
+      .subscribe((rc) => {
+       
+        this.randomCocktail = [rc];
+      });
+      this.showResults = true;
   }
 }

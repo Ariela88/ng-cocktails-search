@@ -1,29 +1,17 @@
-<input [(ngModel)]="searchTerm" placeholder="Cerca un cocktail per nome..." />
-<button (click)="searchCocktail()">Cerca</button>
 
-<input [(ngModel)]="ingredientSearchTerm" placeholder="Cerca un cocktail per ingrediente..." />
-<button (click)="searchCocktailByIngredient()">Cerca per ingrediente</button>
+  <div class="input-container" *ngIf="!showResults"> 
+  <input [(ngModel)]="searchTerm" placeholder="Cerca un cocktail per nome..." />
+  <button (click)="searchCocktail()">Cerca</button>
 
-<button (click)="getRandomCocktail()">Mi sento fortunato</button>
+  <input [(ngModel)]="ingredientSearchTerm" placeholder="Cerca un cocktail per ingrediente..." />
+  <button (click)="searchCocktailByIngredient()">Cerca per ingrediente</button>
 
-<div class="main-container">
-<div *ngIf="cocktails">
-
-  <div class="card-container" *ngFor="let cocktail of cocktails">
-    <app-cocktail [cocktails]="cocktail"></app-cocktail>
-  </div>
+  <button (click)="getRandomCocktail()">Mi sento fortunato</button>
 </div>
 
+<div *ngIf="cocktailsByName || ingredientCocktails || randomCocktail" class="main-container">
+  <app-list [cocktails]="cocktailsByName"></app-list>
+  <app-list [cocktails]="ingredientCocktails"></app-list>
+  <app-list [cocktails]="randomCocktail" *ngIf="randomCocktail"></app-list>
 
-
-
-  <div  class="card-container" *ngFor="let cocktail of ingredientCocktails">
-    <app-cocktail [cocktails]="cocktail"></app-cocktail>
-  </div>
 </div>
-
-<div  class="card-container" *ngIf="randomCocktail">
-
-  <app-cocktail [cocktails]="randomCocktail"></app-cocktail>
-</div>
-
